@@ -32,6 +32,7 @@
     "package.json": "npx sort-package-json"
   },
   "dependencies": {
+    "@vitejs/plugin-legacy": "^7.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -69,7 +70,7 @@
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
     "jsdom": "^27.0.0",
-  "lint-staged": "^15.2.11",
+    "lint-staged": "^15.2.11",
     "prettier": "^2.7.1",
     "rollup": "^2.79.2",
     "sort-package-json": "^1.57.0",
