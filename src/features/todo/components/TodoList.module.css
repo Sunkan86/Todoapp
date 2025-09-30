@@ -1,0 +1,104 @@
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.addForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.addButton {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #2196f3;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.addButton:hover {
+  background-color: #1976d2;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sort button {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sort button:hover {
+  background-color: #eee;
+}
+
+.sort button.active {
+  background-color: #2196f3;
+  color: white;
+  border-color: #1976d2;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+/* Form grid for wider screens */
+@media (min-width: 640px) {
+  .addForm {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 1rem;
+  }
+}
