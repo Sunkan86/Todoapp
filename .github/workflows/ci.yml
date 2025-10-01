@@ -41,6 +41,7 @@ jobs:
               with:
                   install: false
                   build: npm run build
-                  start: npm run serve
+                  start: npx vite preview --port 3000 --host 127.0.0.1 --strictPort
                   wait-on: "http://127.0.0.1:3000/"
+                  wait-on-timeout: 120000
                   browser: electron
