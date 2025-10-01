@@ -44,7 +44,7 @@ describe("Calendar", () => {
 
   it("handles empty state correctly", () => {
     render(<Calendar todos={[]} />);
-    const days = screen.getAllByRole("cell");
+    const days = screen.getAllByTestId(/^calendar-day-/);
     days.forEach(day => {
       expect(within(day).queryByText(/todo/i)).not.toBeInTheDocument();
     });
