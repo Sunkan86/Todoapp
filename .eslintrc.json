@@ -62,6 +62,9 @@
       "typescript": {
         "project": "./tsconfig.eslint.json",
         "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`.
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
@@ -106,6 +109,13 @@
       },
       "env": {
         "cypress/globals": true // enable Cypress global variables.
+      }
+    },
+    {
+      // Vite config uses ESM and plugin resolution that import-plugin sometimes can't statically resolve
+      "files": ["vite.config.ts"],
+      "rules": {
+        "import/no-unresolved": "off"
       }
     }
   ]
