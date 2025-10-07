@@ -5,7 +5,7 @@ describe("Smoke", () => {
     cy.visit("/");
   });
 
-  it("appen laddar och root-renderar", () => {
+  it("loads the app and mounts the root", () => {
     cy.get("#root")
       .should("exist")
       .and($el => {
@@ -13,7 +13,7 @@ describe("Smoke", () => {
       });
   });
 
-  it("kalendern i tomt läge visar inga todos", () => {
+  it("shows no todos in the calendar when empty", () => {
     cy.get('[data-testid^="calendar-day-"]')
       .should("have.length.greaterThan", 0)
       .each($day => {
@@ -21,7 +21,7 @@ describe("Smoke", () => {
       });
   });
 
-  it("UI är redo: input och knapp finns och går att använda", () => {
+  it("UI is ready: input and button are usable", () => {
     cy.get('[data-testid="new-todo-input"]')
       .should("be.visible")
       .and("be.enabled");
