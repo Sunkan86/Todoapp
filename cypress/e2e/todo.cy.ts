@@ -1,6 +1,6 @@
 describe("Todo App", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("/");
   });
 
   it("should allow a user to add a new todo", () => {
