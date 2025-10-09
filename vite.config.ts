@@ -4,7 +4,10 @@ import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
+const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
+
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS && repoName ? `/${repoName}/` : "/",
   plugins: [legacy(), react()],
   resolve: {
     alias: {
