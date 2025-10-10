@@ -45,3 +45,4 @@ jobs:
                   wait-on: "http://127.0.0.1:3000/"
                   wait-on-timeout: 120000
                   browser: electron
+                  config: baseUrl=http://127.0.0.1:3000/Todoapp/
