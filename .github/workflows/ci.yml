@@ -40,8 +40,8 @@ jobs:
               uses: cypress-io/github-action@v6
               with:
                   install: false
-                  build: npm run build
-                  start: npx vite preview --port 3000 --host 127.0.0.1 --strictPort
-                  wait-on: "http://127.0.0.1:3000/"
+                  start: npm run preview:pages
+                  wait-on: "http://127.0.0.1:3000/Todoapp/"
                   wait-on-timeout: 120000
                   browser: electron
+                  config: baseUrl=http://127.0.0.1:3000/Todoapp/
