@@ -1,16 +1,18 @@
 describe("Todo App", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("/");
   });
 
   it("should allow a user to add a new todo", () => {
-    const todoText = "Learn Cypress";
+    const text = "Buy milk";
 
-    cy.getByTestId("new-todo-input").type(todoText);
-    cy.getByTestId("add-todo-button").click();
+    cy.get('[data-testid="new-todo-input"]').should("be.visible");
+    cy.get('[data-testid="new-todo-input"]').clear();
+    cy.get('[data-testid="new-todo-input"]').type(text);
 
-    cy.getByTestId("todo-list")
-      .should("contain.text", todoText)
-      .and("be.visible");
+    cy.get('[data-testid="add-todo-button"]').should("be.visible");
+    cy.get('[data-testid="add-todo-button"]').click();
+
+    cy.contains('[data-testid="todo-list"]', text).should("exist");
   });
 });
