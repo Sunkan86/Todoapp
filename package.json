@@ -12,7 +12,7 @@
     "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
     "lint": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
     "prepare": "husky install",
-    "preview:pages": "GITHUB_ACTIONS=1 npm run build && cp dist/index.html dist/404.html && mkdir -p dist/Todoapp && cp dist/index.html dist/Todoapp/index.html && cp -R dist/assets dist/Todoapp/assets && vite preview --port 3000",
+  "preview:pages": "GITHUB_ACTIONS=1 npm run build && cp dist/index.html dist/404.html && mkdir -p dist/Todoapp && cp dist/index.html dist/Todoapp/index.html && cp -R dist/assets dist/Todoapp/assets && vite preview --port 3000 --host 127.0.0.1 --strictPort",
     "serve": "npm run build && vite preview --port 3000",
     "test": "jest",
     "test:e2e": "start-server-and-test serve http://127.0.0.1:3000/ 'cypress open'",
