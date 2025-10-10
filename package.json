@@ -6,7 +6,7 @@
     "url": "https://github.com/fabien-ml"
   },
   "scripts": {
-    "build": "npm run typecheck && vite build",
+    "build": "npm run typecheck && vite build && cp dist/index.html dist/404.html",
     "dev": "vite",
     "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
     "lint": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
