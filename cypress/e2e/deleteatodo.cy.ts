@@ -6,18 +6,20 @@ describe("Delete a todo", () => {
   it("adds and deletes a todo", () => {
     const text = "Köp mjölk";
 
-    cy.get("[data-cy=todo-input]").should("be.visible");
-    cy.get("[data-cy=todo-input]").as("input");
-    cy.get("@input").clear();
-    cy.get("@input").type(`${text}{enter}`);
+    cy.get('[data-testid="new-todo-input"]').should("be.visible");
+    cy.get('[data-testid="new-todo-input"]').clear();
+    cy.get('[data-testid="new-todo-input"]').type(text);
 
-    cy.contains("[data-cy=todo-item]", text).as("row");
+    cy.get('[data-testid="add-todo-button"]').should("be.visible");
+    cy.get('[data-testid="add-todo-button"]').click();
+
+    cy.contains('[data-testid="todo-list"]', text).as("row");
     cy.get("@row").should("exist");
 
-    cy.get("@row").find("[data-cy=delete-todo]").as("deleteBtn");
+    cy.get("@row").find('[aria-label="Delete todo"]').as("deleteBtn");
     cy.get("@deleteBtn").should("be.visible");
     cy.get("@deleteBtn").click();
 
-    cy.contains("[data-cy=todo-item]", text).should("not.exist");
+    cy.contains('[data-testid="todo-list"]', text).should("not.exist");
   });
 });
