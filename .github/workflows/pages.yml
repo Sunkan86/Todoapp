@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches: [dev]
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -19,21 +19,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
-        with: { node-version: 20, cache: "npm" }
+        with:
+          node-version: 20
+          cache: npm
+
       - name: Install dependencies
-        run: npm ci --no-audit --no-fund
+        run: npm ci
+
       - name: Build
         run: npm run build
+
       - name: Disable Jekyll
         run: touch dist/.nojekyll
+
       - name: Create SPA fallback (404.html)
         run: cp dist/index.html dist/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
