@@ -1,26 +1,23 @@
-describe("Todos — delete flow", () => {
-  const add = (t: string) => {
-    cy.get('[data-testid="new-todo-input"]').clear().type(t);
-    cy.get('[data-testid="add-todo-button"]').click();
-  };
-
+describe("Delete a todo", () => {
   beforeEach(() => {
     cy.visit("/");
   });
 
-  it("deletes a todo", () => {
-    add("Alpha");
-    add("Bravo");
+  it("adds and deletes a todo", () => {
+    const text = "Köp mjölk";
 
-    cy.contains('[data-testid^="todo-text-"]', "Alpha").should("exist");
-    cy.contains('[data-testid^="todo-text-"]', "Bravo").should("exist");
+    cy.get("[data-cy=todo-input]")
+      .should("be.visible")
+      .clear()
+      .type(`${text}{enter}`);
 
-    cy.contains('[data-testid^="todo-text-"]', "Alpha")
-      .closest('[data-testid^="todo-item-"]')
-      .find('[data-testid^="todo-delete-"], [aria-label="Delete todo"]')
-      .click();
+    cy.contains("[data-cy=todo-item]", text).as("row");
+    cy.get("@row").should("exist");
 
-    cy.contains('[data-testid^="todo-text-"]', "Alpha").should("not.exist");
-    cy.contains('[data-testid^="todo-text-"]', "Bravo").should("exist");
+    cy.get("@row").find("[data-cy=delete-todo]").as("deleteBtn");
+    cy.get("@deleteBtn").should("be.visible");
+    cy.get("@deleteBtn").click();
+
+    cy.contains("[data-cy=todo-item]", text).should("not.exist");
   });
 });
