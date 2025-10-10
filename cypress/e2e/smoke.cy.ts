@@ -1,10 +1,10 @@
-describe("Todo App", () => {
+describe("App smoke test", () => {
   beforeEach(() => {
     cy.visit("/");
   });
 
-  it("should allow a user to add a new todo", () => {
-    const text = "Buy milk";
+  it("renders and can add a todo", () => {
+    const text = "Write tests";
 
     cy.get('[data-testid="new-todo-input"]').should("be.visible");
     cy.get('[data-testid="new-todo-input"]').clear();
