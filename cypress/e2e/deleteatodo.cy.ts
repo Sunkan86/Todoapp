@@ -6,10 +6,10 @@ describe("Delete a todo", () => {
   it("adds and deletes a todo", () => {
     const text = "Köp mjölk";
 
-    cy.get("[data-cy=todo-input]")
-      .should("be.visible")
-      .clear()
-      .type(`${text}{enter}`);
+    cy.get("[data-cy=todo-input]").should("be.visible");
+    cy.get("[data-cy=todo-input]").as("input");
+    cy.get("@input").clear();
+    cy.get("@input").type(`${text}{enter}`);
 
     cy.contains("[data-cy=todo-item]", text).as("row");
     cy.get("@row").should("exist");
